@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Proxy object</title>
+</head>
+<body>
+    <p><span id="toggle-all">Toggle checked</span></p>
+    <ol id="vids">
+        <li><input type="checkbox" checked="checked"><a href="http://new.music.yahoo.com/videos/--44"></a></input></li>
+        <li><input type="checkbox" checked="checked"><a href="http://new.music.yahoo.com/videos/--44"></a></input></li>
+        <li><input type="checkbox" checked="checked"><a href="http://new.music.yahoo.com/videos/--44"></a></input></li>
+        <li><input type="checkbox" checked="checked"><a href="http://new.music.yahoo.com/videos/--44"></a></input></li>
+        <li><input type="checkbox" checked="checked"><a href="http://new.music.yahoo.com/videos/--44"></a></input></li>
+        <li><input type="checkbox" checked="checked"><a href="http://new.music.yahoo.com/videos/--44"></a></input></li>
+    </ol>
+    <script type="text/javascript">
+        var $ = function ($id) {
+            return document.getElementById();
+        }
+        $('vids').onclick = function (e) {
+            var src, id;
+            e = e || window.event;
+            src = e.target || e.srcElement;
+
+            if (src.nodeName !== A) {
+                return;
+            }
+
+            if (type e.preventDefault === "function") {
+                e.preventDefault();
+            }
+            if (e.returnValue) {
+                e.returnValue = false;
+            }
+            id = src.href.split('--')[1];
+            if (src.className === 'play') {
+                src.parentNode.innerHTML = videos.getPlayer(id);
+                return;
+            }
+            src.parentNode.id = 'v' + id;
+            videos.getInfo(id);
+        }
+
+        $('toggle-all').onclick = function (e) {
+            var hrefs,
+                i,
+                max,
+                id;
+            hrefs = $('vids').getElementsByTagsName('a');
+            for (i = 0, max = hrefs.length; i < max; i += 1) {
+                if (hrefs[i].className === 'play') {
+                    continue;
+                }
+                if (!hrefs[i].parentNode.firstChild.checked) {
+                    continue;
+                }
+                id = hrefs[i].href.split('--')[1];
+                hrefs[i].parentNode.id = 'v' + id;
+                videos.getInfo(id);
+            }
+        }
+    </script>
+</body>
+</html>
